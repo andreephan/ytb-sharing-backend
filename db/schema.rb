@@ -23,8 +23,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_162723) do
     t.text "description"
     t.string "thumbnail"
     t.string "url"
+    t.string "youtube_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "videos", "users"
 end
