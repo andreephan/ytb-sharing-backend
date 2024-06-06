@@ -20,10 +20,10 @@ class YoutubeService
     return unless video_id
 
     response = fetch_video_info(video_id)
-    if response.success?
+    if response.success? && response['items'].any?
       snippet = response['items'][0]['snippet']
     else
-      errors.add(:url, 'Unable to fetch video data from YouTube')
+      return
     end
     {
       title: snippet['title'],
@@ -36,10 +36,9 @@ class YoutubeService
 
   def extract_youtube_video_id(url)
     uri = URI.parse(url)
-    if uri.query
-      params = URI.decode_www_form(uri.query)
-      video_id = params.assoc('v')&.last
-    end
-    video_id if video_id
+    return unless uri
+
+    params = URI.decode_www_form(uri.query)
+    params.assoc('v')&.last
   end
 end

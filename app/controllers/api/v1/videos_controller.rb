@@ -8,9 +8,10 @@ class Api::V1::VideosController < ApplicationController
 
   def create
     video_info = YoutubeService.new.fetch_youtube_data(video_params[:url])
+    return render json: { errors: 'Invalid Youtube URL' }, status: :unprocessable_entity unless video_info
+
     video = @user.videos.build(video_info)
     if video.save
-      NotificationService.new.send_notification('New video added')
       render json: video, status: :created
     else
       render json: { errors: video.errors.full_messages }, status: :unprocessable_entity
