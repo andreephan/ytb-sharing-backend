@@ -40,6 +40,9 @@ gem 'rspec-rails', '~> 6.1.0'
 
 gem 'csv', '~> 3.1.0'
 
+gem 'redis', '~> 4.2', '>= 4.2.5'
+
+gem 'firebase'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

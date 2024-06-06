@@ -10,7 +10,7 @@ class Api::V1::VideosController < ApplicationController
     video_info = YoutubeService.new.fetch_youtube_data(video_params[:url])
     video = @user.videos.build(video_info)
     if video.save
-      ActionCable.server.broadcast("notification_channel", {message: "New video added"})
+      NotificationService.new.send_notification('New video added')
       render json: video, status: :created
     else
       render json: { errors: video.errors.full_messages }, status: :unprocessable_entity
