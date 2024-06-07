@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
     user.password = params[:password] if user.password_digest.nil?
     user.save
 
-    if user && user.authenticate(params[:password])
+    if user.errors.blank? && user.authenticate(params[:password])
       token = encode_token({ user_id: user.id, expired: Time.now.to_i + 3600})
       render json: { user: user.email, token: token }, status: :ok
     else
