@@ -1,24 +1,63 @@
-# README
+# YouTube Video Sharing App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+This application provides a platform for users to share their favorite YouTube videos with others. Whether it's an entertaining clip, a tutorial, or an inspiring talk, users can easily discover and share content that resonates with them.
 
-* Ruby version
+### Main Features:
+- Login/Logout: Users can securely log in and out of the platform. If a user doesn't have an account, they can quickly register to gain access to all features.
 
-* System dependencies
+- List of Shared Videos: Explore a curated list of videos shared by users. Discover new content across various categories and genres.
 
-* Configuration
+- Share YouTube Videos: Share YouTube videos directly within the app. Whether it's a captivating story, a thought-provoking documentary, or a helpful tutorial, users can share content they find interesting or valuable.
 
-* Database creation
+- Real-time Notifications: Stay updated with real-time notifications. Receive alerts when someone shares a video, ensuring you never miss out on the latest content.
 
-* Database initialization
+- Direct Video Playback: Enjoy seamless video playback directly within the app. With integrated YouTube support, users can watch videos without leaving the platform, providing a seamless viewing experience.
 
-* How to run the test suite
+## Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby (3.3.1)
+- Rails (7.1.3.3)
+- PostgreSQL 14.12
+- Firebase Realtime Database
+- YouTube Data API v3
 
-* Deployment instructions
+## Installation & Configuration
 
-* ...
+1. Clone the repository:
+
+```
+git clone https://github.com/andreephan/ytb-sharing-backend.git
+```
+
+2. Navigate to the project directory:
+```
+cd ytb-sharing-backend
+```
+
+3. Create `.env` file from sample and fill coresponding value:
+```
+cp .env_sample.erb .env
+```
+
+4. Install dependencies:
+```
+bundle install
+```
+
+5. Setup database:
+```
+rails db:create
+rails db:migrate
+```
+
+6. Start server:
+```
+rails server
+```
+
+Run Rspec:
+```
+rspec
+```
